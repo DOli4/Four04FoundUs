@@ -1,5 +1,10 @@
 using Robocode.TankRoyale.BotApi;
 using Robocode.TankRoyale.BotApi.Events;
+using Robocode.TankRoyale.BotApi.Graphics;
+
+using System.IO;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 
 // ------------------------------------------------------------------
 // MyFirstBot
@@ -12,7 +17,7 @@ using Robocode.TankRoyale.BotApi.Events;
 public class Four04FoundUs : Bot
 {
     double moveAmount; // How much to move
-    
+
     // The main method starts our bot
     static void Main(string[] args)
     {
@@ -34,7 +39,7 @@ public class Four04FoundUs : Bot
         {
             // MAX SPEED
             MaxSpeed = 5;
-            while (True)
+            while (true)
             {
                 SetTurnRight(100);
                 Fire(0.1);
