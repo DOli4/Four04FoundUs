@@ -28,8 +28,8 @@ public class Four04FoundUs : Bot
     public override void Run()
     {
         // Set colors
-        BodyColor = Color.Black;
-        TurretColor = Color.Black;
+        BodyColor = Color.Cyan;
+        TurretColor = Color.Cyan;
         RadarColor = Color.Cyan;
         BulletColor = Color.Cyan;
         ScanColor = Color.Pink;
@@ -39,11 +39,9 @@ public class Four04FoundUs : Bot
         {
             // MAX SPEED
             MaxSpeed = 5;
-            while (true)
-            {
-                SetTurnRight(100);
-                Fire(0.1);
-            }
+            Forward(100);
+            TurnGunLeft(360);
+            Back(100);
         }
     }
 
@@ -51,6 +49,8 @@ public class Four04FoundUs : Bot
     public override void OnScannedBot(ScannedBotEvent evt)
     {
         Fire(1);
+        Forward(10);
+        Back(10);
     }
 
     // We were hit by a bullet -> turn perpendicular to the bullet
