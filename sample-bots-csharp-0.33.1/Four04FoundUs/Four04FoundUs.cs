@@ -11,6 +11,8 @@ using Robocode.TankRoyale.BotApi.Events;
 // ------------------------------------------------------------------
 public class Four04FoundUs : Bot
 {
+    double moveAmount; // How much to move
+    
     // The main method starts our bot
     static void Main(string[] args)
     {
@@ -20,13 +22,23 @@ public class Four04FoundUs : Bot
     // Called when a new round is started -> initialize and do some movement
     public override void Run()
     {
+        // Set colors
+        BodyColor = Color.Black;
+        TurretColor = Color.Black;
+        RadarColor = Color.Cyan;
+        BulletColor = Color.Cyan;
+        ScanColor = Color.Pink;
+
         // Repeat while the bot is running
         while (IsRunning)
         {
-            Forward(100);
-            TurnGunLeft(360);
-            Back(100);
-            TurnGunLeft(360);
+            // MAX SPEED
+            MaxSpeed = 5;
+            while (True)
+            {
+                SetTurnRight(100);
+                Fire(0.1);
+            }
         }
     }
 
@@ -39,10 +51,5 @@ public class Four04FoundUs : Bot
     // We were hit by a bullet -> turn perpendicular to the bullet
     public override void OnHitByBullet(HitByBulletEvent evt)
     {
-        // Calculate the bearing to the direction of the bullet
-        var bearing = CalcBearing(evt.Bullet.Direction);
-
-        // Turn 90 degrees to the bullet direction based on the bearing
-        TurnRight(90 - bearing);
     }
 }
